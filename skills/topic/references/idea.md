@@ -25,7 +25,7 @@ Record the findings in `idea.md` with source links.
 The structure of `idea.md` follows its content, and the language is free. The opening is the only required part; every other section appears when the topic needs it. Keep it logical and clear; reorganize as it grows.
 
 - **Opening**: what the idea is and why it matters.
-- **Points to do**: what to do and how. Major points get their own sections; smaller ones group into bullets.
+- **Point A**, **Point B**, ...: what to do and how. Major points get their own sections; smaller ones group into bullets.
 - **Branching directions**: one section per direction with its tradeoffs; write the conclusion once decided.
 - **Decisions**: the key decisions, what to do and what to skip, so later work does not relitigate them.
 - **Open questions**: blockers and points still under discussion, one line each.
