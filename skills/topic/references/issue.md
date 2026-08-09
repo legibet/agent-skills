@@ -12,7 +12,7 @@ Reproduce the problem first. Keep verified facts and speculation clearly separat
 
 ## Format
 
-An issue document can be very short:
+Structure follows content; only Problem is required at the start. Other sections appear when needed.
 
 - **Problem**: the symptoms, how to reproduce it, and the impact.
 - **Possible solutions**: options with their tradeoffs, and the chosen one. Optional.
