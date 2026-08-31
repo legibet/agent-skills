@@ -5,7 +5,7 @@ description: Use Codex CLI as an independent agent for delegated work, code revi
 
 # Codex CLI
 
-Codex runs non-interactively through `codex exec`. A new run starts a separate Codex session in the selected working directory, streams progress to stderr, and prints its final response to stdout.
+Codex runs non-interactively through `codex exec`. A new run starts a separate Codex session in the selected working directory, streams progress to stderr, and prints its final response to stdout. Redirect stderr to `/tmp/codex.err` so the turn log stays out of the caller context. A run is done when the process exits; stdout is the reply. If the command fails, read `/tmp/codex.err`.
 
 ## Run a task
 
@@ -16,12 +16,13 @@ codex -a never \
   -C <working-directory> \
   -m gpt-5.6-sol \
   -c model_reasoning_effort=high \
-  exec "<request>"
+  exec "<request>" \
+  </dev/null 2>/tmp/codex.err
 ```
 
 `-a never` is a global flag and therefore appears before `exec`. It keeps an unattended run from waiting for interactive approval; failed operations return to Codex instead.
 
-Pass the request as the final argument, or replace it with `-` to read from stdin.
+`</dev/null>` keeps piped stdin from being appended to the prompt.
 
 ### Model and reasoning
 
@@ -31,41 +32,40 @@ Reasoning effort accepts `low`, `medium`, `high`, or `xhigh`. Higher effort give
 
 ## Continue a session
 
-Sessions are saved by default. Add `--json` when the caller needs the session ID in a machine-readable form:
+`resume --last` continues the most recent session in that working directory. A thread ID continues a specific one. The thread id is on the `session id:` line in `/tmp/codex.err`. Keep model and effort unless the caller picks different values.
 
 ```bash
 codex -a never \
   -C <working-directory> \
   -m gpt-5.6-sol \
   -c model_reasoning_effort=high \
-  exec --json "<request>"
+  exec resume --last "<follow-up>" \
+  </dev/null 2>/tmp/codex.err
 ```
-
-The `thread.started` event contains `thread_id`. Continue that session with the same model and effort unless the caller selects different values:
 
 ```bash
 codex -a never \
   -C <working-directory> \
   -m gpt-5.6-sol \
   -c model_reasoning_effort=high \
-  exec resume <thread-id> "<follow-up>"
+  exec resume <thread-id> "<follow-up>" \
+  </dev/null 2>/tmp/codex.err
 ```
-
-`resume --last` selects the most recently saved session; a thread ID selects a specific one.
 
 ## Review code
 
-Use the review subcommand with one scope:
+Pass either one scope flag or a prompt. `--help` lists both; the CLI still rejects that combination (exit 2).
 
 ```bash
 codex -a never \
   -C <working-directory> \
   -m gpt-5.6-sol \
   -c model_reasoning_effort=high \
-  exec review --uncommitted
+  exec review --uncommitted \
+  </dev/null 2>/tmp/codex.err
 ```
 
-The available scopes are `--uncommitted`, `--base <branch>`, and `--commit <sha>`. A final positional argument supplies review instructions.
+Other shapes: `review --base <branch>`, `review --commit <sha>`, `review "<instructions>"`.
 
 ## Command reference
 
