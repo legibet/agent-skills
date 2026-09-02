@@ -12,7 +12,7 @@ Headless Antigravity through `agy -p`. The process working directory is the work
 ```bash
 agy -p "<request>" \
   --output-format json \
-  --model gemini-3.7-flash \
+  --model gemini-3.8-flash \
   --effort high \
   --print-timeout 10m \
   --dangerously-skip-permissions \
@@ -23,7 +23,7 @@ Start the command in the target workspace. `--add-dir <path>` adds another folde
 
 `</dev/null>` keeps piped stdin from being appended to the `-p` prompt.
 
-`--model gemini-3.7-flash` requires `--effort` (`low`, `medium`, or `high`). Default is `high`. Set both on every run.
+`--model gemini-3.8-flash` requires `--effort` (`low`, `medium`, or `high`). Default is `high`. Set both on every run.
 
 `--dangerously-skip-permissions` auto-approves tools in headless mode. Without it, shell, URL, and MCP calls are auto-denied (`CANCELED`, empty `response`, exit 0).
 
@@ -45,7 +45,7 @@ The exit code is `0` for both `SUCCESS` and `CANCELED`. Read `status`.
 agy -p "<follow-up>" \
   -c \
   --output-format json \
-  --model gemini-3.7-flash \
+  --model gemini-3.8-flash \
   --effort high \
   --print-timeout 10m \
   --dangerously-skip-permissions \
@@ -56,7 +56,7 @@ agy -p "<follow-up>" \
 agy -p "<follow-up>" \
   --conversation <conversation_id> \
   --output-format json \
-  --model gemini-3.7-flash \
+  --model gemini-3.8-flash \
   --effort high \
   --print-timeout 10m \
   --dangerously-skip-permissions \
