@@ -1,6 +1,6 @@
 ---
 name: hr
-description: "Herdr agent coordination — spawn a coding agent, prompt an agent already in a pane, fan out parallel work, chain agent dependencies, unblock a blocked agent, inspect state, or run background commands through Herdr. Prefer built-in subagents for simple delegation; use Herdr when different agent kinds, user-observable panes, or persistent sessions are needed. Requires HERDR_ENV=1."
+description: "Herdr agent coordination — spawn a coding agent, prompt an agent already in a pane, fan out parallel work, chain agent dependencies, unblock a blocked agent, inspect state, or run background commands through Herdr. Requires HERDR_ENV=1."
 ---
 
 # hr
@@ -15,7 +15,7 @@ Never run bare `herdr` — it launches the TUI. This file is the protocol. Run `
 
 Agent commands take a **target**: a live **name**, or the **pane ID** that currently hosts the agent. Names match `[a-z][a-z0-9_-]{0,31}`, are unique among live agents, and are cleared on exit. Copy those values from JSON the CLI returns. Do not invent a pane ID or name.
 
-`herdr agent list` puts kind in `.agent` (`opencode`, `pi`, `claude`, …). Use `.agent` to choose the row. The target you pass is `.name` when that field is present, otherwise `.pane_id`. `.agent` is kind, not a target.
+`herdr agent list` puts kind in `.agent` (`opencode`, `pi`, `claude`, `agy`, …). Use `.agent` to choose the row. The target you pass is `.name` when that field is present, otherwise `.pane_id`. `.agent` is kind, not a target.
 
 A name exists only after `herdr agent start <name>` or `herdr agent rename`. Agents the user launched in a pane have no `.name` field. Address those by `.pane_id`.
 
