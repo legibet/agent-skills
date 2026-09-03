@@ -1,6 +1,6 @@
 ---
 name: hr
-description: "Herdr agent coordination — spawn a coding agent, prompt an agent already in a pane, fan out parallel work, chain agent dependencies, unblock a blocked agent, inspect state, or run background commands through Herdr. Requires HERDR_ENV=1."
+description: "Herdr agent coordination — spawn a coding agent, prompt an agent already in a pane, fan out parallel work, chain agent dependencies, or run background commands through Herdr. Invoke only in a Herdr environment or when the user asks."
 ---
 
 # hr
