@@ -23,7 +23,7 @@ Start the command in the target workspace. `--add-dir <path>` adds another folde
 
 `</dev/null>` keeps piped stdin from being appended to the `-p` prompt.
 
-`--model gemini-3.8-flash` requires `--effort` (`low`, `medium`, or `high`). Default is `high`. Set both on every run.
+`--model gemini-3.8-flash` requires `--effort` (`low`, `medium`, or `high`). Default is `medium`. Set both on every run.
 
 `--dangerously-skip-permissions` auto-approves tools in headless mode. Without it, shell, URL, and MCP calls are auto-denied (`CANCELED`, empty `response`, exit 0).
 
