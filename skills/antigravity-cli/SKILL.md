@@ -21,7 +21,7 @@ agy -p "<request>" \
 
 Start the command in the target workspace. `--add-dir <path>` adds another folder to that workspace.
 
-`</dev/null>` keeps piped stdin from being appended to the `-p` prompt.
+`</dev/null>` keeps piped stdin from being appended to the `-p` prompt. For a long request, write it to a file and pass `< file` in place of `-p "<request>"` and `</dev/null` — inline quoting breaks on quotes and newlines.
 
 `--model gemini-3.8-flash` requires `--effort` (`low`, `medium`, or `high`). Default is `medium`. Set both on every run.
 
