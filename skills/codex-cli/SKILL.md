@@ -16,13 +16,15 @@ codex -a never \
   -C <working-directory> \
   -m gpt-5.6-sol \
   -c model_reasoning_effort=high \
-  exec "<request>" \
+  exec --skip-git-repo-check "<request>" \
   </dev/null 2>/tmp/codex.err
 ```
 
 `-a never` is a global flag and therefore appears before `exec`. It keeps an unattended run from waiting for interactive approval; failed operations return to Codex instead.
 
-`</dev/null>` keeps piped stdin from being appended to the prompt.
+`--skip-git-repo-check` lifts Codex's trusted-directory check; without it an unattended run fails before doing any work.
+
+`</dev/null>` keeps piped stdin from being appended to the prompt. For a long request, write it to a file and pass `- < file` in place of the quoted prompt and `</dev/null` — inline quoting breaks on quotes and newlines.
 
 ### Model and reasoning
 
@@ -39,7 +41,7 @@ codex -a never \
   -C <working-directory> \
   -m gpt-5.6-sol \
   -c model_reasoning_effort=high \
-  exec resume --last "<follow-up>" \
+  exec resume --skip-git-repo-check --last "<follow-up>" \
   </dev/null 2>/tmp/codex.err
 ```
 
@@ -48,7 +50,7 @@ codex -a never \
   -C <working-directory> \
   -m gpt-5.6-sol \
   -c model_reasoning_effort=high \
-  exec resume <thread-id> "<follow-up>" \
+  exec resume --skip-git-repo-check <thread-id> "<follow-up>" \
   </dev/null 2>/tmp/codex.err
 ```
 
@@ -61,7 +63,7 @@ codex -a never \
   -C <working-directory> \
   -m gpt-5.6-sol \
   -c model_reasoning_effort=high \
-  exec review --uncommitted \
+  exec review --skip-git-repo-check --uncommitted \
   </dev/null 2>/tmp/codex.err
 ```
 
