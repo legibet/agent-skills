@@ -9,12 +9,12 @@ Codex runs non-interactively through `codex exec`. A new run starts a separate C
 
 ## Run a task
 
-Use `gpt-5.6-sol` with `high` reasoning effort by default:
+Use `gpt-6-sol` with `high` reasoning effort by default:
 
 ```bash
 codex -a never \
   -C <working-directory> \
-  -m gpt-5.6-sol \
+  -m gpt-6-sol \
   -c model_reasoning_effort=high \
   exec --skip-git-repo-check "<request>" \
   </dev/null 2>/tmp/codex.err
@@ -28,9 +28,11 @@ codex -a never \
 
 ### Model and reasoning
 
-`gpt-5.6-sol` is the default, higher-capability model. `gpt-5.6-luna` is the faster model for simple tasks. Set the model explicitly with `-m` on every run.
+Available models, in ascending capability and cost: `gpt-6-luna`, `gpt-6-sol`, `gpt-5.6-sol`. Set the model explicitly with `-m` on every run.
 
-Reasoning effort accepts `low`, `medium`, `high`, or `xhigh`. Higher effort gives the model more room to deliberate and generally increases latency. Use `high` by default and set it explicitly with `-c model_reasoning_effort=<level>`.
+Reasoning effort accepts `medium`, `high`, `xhigh`, or `max` (not `low`). Higher effort gives the model more room to deliberate and generally increases latency. Set it explicitly with `-c model_reasoning_effort=<level>`.
+
+Use `gpt-6-sol` with `medium` or `high` effort for most delegated tasks. Pair weaker models with higher effort: `gpt-6-luna` with `xhigh` or `max` suits simple but tedious tasks at low cost. For especially complex reasoning or coding, `gpt-5.6-sol` with `high` or `xhigh` may outperform `gpt-6-sol`.
 
 ## Continue a session
 
@@ -39,7 +41,7 @@ Reasoning effort accepts `low`, `medium`, `high`, or `xhigh`. Higher effort give
 ```bash
 codex -a never \
   -C <working-directory> \
-  -m gpt-5.6-sol \
+  -m gpt-6-sol \
   -c model_reasoning_effort=high \
   exec resume --skip-git-repo-check --last "<follow-up>" \
   </dev/null 2>/tmp/codex.err
@@ -48,7 +50,7 @@ codex -a never \
 ```bash
 codex -a never \
   -C <working-directory> \
-  -m gpt-5.6-sol \
+  -m gpt-6-sol \
   -c model_reasoning_effort=high \
   exec resume --skip-git-repo-check <thread-id> "<follow-up>" \
   </dev/null 2>/tmp/codex.err
@@ -61,7 +63,7 @@ Pass either one scope flag or a prompt. `--help` lists both; the CLI still rejec
 ```bash
 codex -a never \
   -C <working-directory> \
-  -m gpt-5.6-sol \
+  -m gpt-6-sol \
   -c model_reasoning_effort=high \
   exec review --skip-git-repo-check --uncommitted \
   </dev/null 2>/tmp/codex.err
