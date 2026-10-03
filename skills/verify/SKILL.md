@@ -9,7 +9,7 @@ Verify the change before delivering it. Add project tests only when the user ask
 
 ## Verifying a change
 
-- Verify the changed behavior or interface with a one-off e2e test: a command, a scratch script, or a browser check.
+- Verify the changed behavior or interface with a one-off e2e test: a command, a scratch script, or a browser check. (When available, prefer delegating a complex, multi-step e2e test (such as a browser flow) to a subagent that reports each check as pass or fail with evidence.)
 - Run the project's existing checks and test suite.
 
 ## Project tests
