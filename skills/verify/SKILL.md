@@ -1,6 +1,6 @@
 ---
 name: verify
-description: Use before delivering a code change, before adding or changing project tests, or when asked what to test.
+description: Use before delivering a code change in a project, before adding or changing project tests, or when asked what to test.
 ---
 
 # Verify
