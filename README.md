@@ -10,6 +10,7 @@ Personal agent skills.
 | [tidy](skills/tidy/SKILL.md)                       | Simplify and tidy existing code for readability           |
 | [topic](skills/topic/SKILL.md)                     | Document-driven workflow: idea / issue → plan → implement |
 | [verify](skills/verify/SKILL.md)                   | Verify a change before delivering; propose regression tests only when warranted |
+| [write](skills/write/SKILL.md)                     | Write and revise prose in Chinese or English              |
 
 ## License
 
